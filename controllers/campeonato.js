@@ -47,6 +47,17 @@ exports.maiorPontuacao = (req, res) => {
     })
 }
 
+exports.maiorPlacar = (req, res) => {
+  
+  Campeonato.maiorPlacar()
+    .then((resultado) => {
+      res.status(200).send({ Placar: resultado.rows[0] })
+    })
+    .catch((erro) => {
+      res.status(500).send({ erro: erro });
+    })
+}
+
 exports.inserirEquipe = (req, res) => {
   const valores=req.body
 
